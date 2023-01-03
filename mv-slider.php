@@ -10,3 +10,8 @@
  * Text Domain: 
  * Domain Path: 
  */
+
+//  Para nao ser acessado diretamente
+ if(!defined ('ABSPATH')){
+    exit;
+ }
