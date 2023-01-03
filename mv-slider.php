@@ -15,3 +15,16 @@
  if(!defined ('ABSPATH')){
     exit;
  }
+
+ if(!class_exists('MV_Slider')){
+    class MV_Slider{
+        function __construct()
+        {
+            
+        }
+    }
+ }
+
+ if(class_exists('MV_Slider')){
+    $mv_slider = new MV_Slider();
+ }
