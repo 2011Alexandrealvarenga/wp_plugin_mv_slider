@@ -1,6 +1,6 @@
 <?php 
 $meta = get_post_meta($post->ID);
-$link_txt = get_post_meta($post->ID, 'mv_slider_link_text', true);
+$link_text = get_post_meta($post->ID, 'mv_slider_link_text', true);
 $link_url = get_post_meta($post->ID, 'mv_slider_link_url', true);
 
 ?>
