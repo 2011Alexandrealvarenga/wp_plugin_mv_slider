@@ -21,6 +21,9 @@
         function __construct(){
             $this->define_constants();
 
+            // adicionar menu
+            add_action('admin_menu', array($this, 'add_menu'));
+
             // chama o post type
             require_once(MV_SLIDER_PATH . 'post-types/class.mv-slider-cpt.php');
             $MV_Slider_Post_Type = new MV_Slider_Post_Type();
@@ -39,6 +42,44 @@
         }
         public static function uninstall(){
 
+        }
+
+        // adicionar menu
+        public function add_menu(){
+            // exibir em outros locais o item/precisa tirar o icone
+            // add_plugin_page, menu plugin
+            // add_theme_page, menu aparencia
+            // add_options_page, menu configurações/settings
+
+            add_menu_page(
+                'MV Slider Options',
+                'MV Slider',
+                'manage_options',
+                'mv_slider_admin',
+                array($this, 'mv_slider_settings_page'),
+                'dashicons-images-alt2'
+            );
+            add_submenu_page(
+                'mv_slider_admin',
+                'Manage Slides',
+                'Manage Slides',
+                'manage_options',
+                'edit.php?post_type=mv-slider',
+                null,
+                null
+            );
+            add_submenu_page(
+                'mv_slider_admin',
+                'Add New Slide',
+                'Add New Slide',
+                'manage_options',
+                'post-new.php?post_type=mv-slider',
+                null,
+                null
+            );
+        }
+        public function mv_slider_settings_page(){
+            echo "This is a test page";
         }
     }
  }
