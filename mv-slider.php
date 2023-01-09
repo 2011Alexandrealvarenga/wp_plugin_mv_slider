@@ -27,6 +27,9 @@
             // chama o post type
             require_once(MV_SLIDER_PATH . 'post-types/class.mv-slider-cpt.php');
             $MV_Slider_Post_Type = new MV_Slider_Post_Type();
+
+            require_once(MV_SLIDER_PATH . 'class.mv-slider-settings.php');
+            $MV_Slider_Settings = new MV_Slider_Settings();
         }
         public function define_constants(){
             define('MV_SLIDER_PATH', plugin_dir_path(__FILE__));
@@ -79,7 +82,7 @@
             );
         }
         public function mv_slider_settings_page(){
-            echo "This is a test page";
+            require(MV_SLIDER_PATH .'views/settings-page.php');
         }
     }
  }
