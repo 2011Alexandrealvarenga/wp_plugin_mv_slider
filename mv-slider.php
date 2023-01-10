@@ -82,6 +82,17 @@
             );
         }
         public function mv_slider_settings_page(){
+            // verificacao se tem permissao
+            if(!current_user_can('manage_options')){
+                return;
+            }
+
+            // mensagem de sucesso
+            if(isset($_GET['settings-updated'])){
+                add_settings_error('mv_slider_options','mv_slider_message','Settings Saved','success');
+            }
+            settings_errors('mv_slider_options');
+            
             require(MV_SLIDER_PATH .'views/settings-page.php');
         }
     }
