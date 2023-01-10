@@ -30,6 +30,11 @@
 
             require_once(MV_SLIDER_PATH . 'class.mv-slider-settings.php');
             $MV_Slider_Settings = new MV_Slider_Settings();
+
+            // shortcode
+            require_once(MV_SLIDER_PATH . 'shortcode/class.mv-slider-shortcode.php');
+            $MV_Slider_Shortcode = new MV_Slider_Shortcode();
+
         }
         public function define_constants(){
             define('MV_SLIDER_PATH', plugin_dir_path(__FILE__));
