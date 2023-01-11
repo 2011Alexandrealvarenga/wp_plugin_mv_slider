@@ -54,7 +54,22 @@
             unregister_post_type('mv-slider');
         }
         public static function uninstall(){
+            // deleta dados do banco de dados o que tem id 'mv_slider_options'
+            // -1 quer dizer todos os posts
+            delete_option( 'mv_slider_options' );
 
+            $posts = get_posts(
+                array(
+                    'post_type' => 'mv-slider',
+                    'number_posts'  => -1,
+                    'post_status'   => 'any'
+                )
+            );
+            
+            // true envia direto para a lixeira
+            foreach( $posts as $post ){
+                wp_delete_post( $post->ID, true );
+            }
         }
 
         // adicionar menu
@@ -122,6 +137,8 @@
  if(class_exists('MV_Slider')){
     register_activation_hook(__FILE__, array('MV_Slider','activate'));
     register_deactivation_hook(__FILE__, array('MV_Slider','deactivate'));
+
+    // hook de desinstalação
     register_uninstall_hook(__FILE__, array('MV_Slider','uninstall'));
     $mv_slider = new MV_Slider();
  }
